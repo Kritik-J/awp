@@ -16,8 +16,8 @@ Perform the Following Steps :
       - index.html
       - images
         - firefox-icon.png
-      - css
-      - js
+      - scripts
+      - styles
       - README.md
 
 8.  Modify the content index.html so that it looks like this:

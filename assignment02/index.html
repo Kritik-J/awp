@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the number</title>
+  </head>
+
+  <style>
+    *,
+    *::after,
+    *::before {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #9b9b9b;
+      padding: 20px;
+      border-radius: 4px;
+      max-width: 500px;
+      gap: 25px;
+    }
+
+    .heading {
+      font-size: 32px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-size: 18px;
+    }
+
+    input,
+    button {
+      font-size: 16px;
+    }
+
+    input {
+      border-radius: 4px;
+      border: 1px solid black;
+      background-color: transparent;
+      padding: 8px;
+      outline: none;
+    }
+
+    button {
+      border-radius: 4px;
+      background-color: rgb(11, 46, 128);
+      color: white;
+      padding: 10px;
+      border: none;
+    }
+
+    button:hover {
+      cursor: pointer;
+      box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.221);
+    }
+
+    .result {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 16px;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <h1 class="heading">Guess the number between 1 and 100</h1>
+
+      <form id="form">
+        <label for="guess"> Enter a number </label>
+
+        <input
+          type="number"
+          name="guess"
+          id="guess"
+          required="required"
+          min="1"
+          max="100"
+        />
+
+        <button type="submit" id="button">Guess</button>
+      </form>
+
+      <div class="result">
+        <p id="attempts">Attempts:&nbsp;<span id="attempts-text"></span></p>
+
+        <p id="last-guesses">
+          Previous guesses:&nbsp;<span id="last-guesses-text"></span>
+        </p>
+
+        <p id="message">Message:&nbsp;<span id="message-text"></span></p>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("form");
+      const lastGuesses = document.getElementById("last-guesses-text");
+      const message = document.getElementById("message-text");
+      const noOfAttempts = document.getElementById("attempts-text");
+      let guesses = [];
+      let attempts = 0;
+
+      // Generate a random number between 1 and 100
+
+      const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+      // Set initial values of the game
+
+      noOfAttempts.textContent = attempts;
+
+      lastGuesses.textContent = "None";
+
+      message.textContent = "You have 10 attempts to guess the number";
+
+      // Add event listener to the form
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const guess = document.getElementById("guess").value;
+
+        // Check if the user has exceeded the number of attempts
+        if (attempts == 10) {
+          message.textContent = "You have exceeded the number of attempts";
+          message.style.color = "red";
+
+          showResetButton();
+        } else {
+          // Check if the user has already guessed the number
+
+          if (guesses.includes(guess)) {
+            message.textContent = "You already guessed that number";
+            message.style.color = "red";
+          } else {
+            guesses.push(guess);
+            attempts++;
+
+            // Check if the user has guessed the number
+
+            if (guess == randomNumber) {
+              message.textContent = `You guessed the number in ${attempts} attempts`;
+              message.style.color = "green";
+
+              showResetButton();
+            }
+
+            // Check if the user's guess is too high or too low
+            else if (guess > randomNumber) {
+              message.textContent = "Your guess is too high";
+              message.style.color = "red";
+            } else {
+              message.textContent = "Your guess is too low";
+              message.style.color = "red";
+            }
+          }
+        }
+
+        // Update the UI
+
+        lastGuesses.textContent = guesses.join(", ");
+        noOfAttempts.textContent = attempts;
+      });
+
+      // Function to show the reset button
+
+      function showResetButton() {
+        const button = document.getElementById("button");
+        button.textContent = "Play Again";
+        button.style.backgroundColor = "green";
+
+        button.addEventListener("click", () => {
+          window.location.reload();
+        });
+      }
+    </script>
+  </body>
+</html>

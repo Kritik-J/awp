@@ -22,7 +22,7 @@
 
 8.  Modify the content index.html so that it looks like this:
 
-![Output](./images/output.png)
+![Output](./images/oi_101.png)
 
 9.  Push Your Repository to github
 10. Submit the Github Repository URL

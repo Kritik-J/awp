@@ -8,4 +8,4 @@ Create a simple guess the number type game. It should choose a random number bet
 
 ### Output:
 
-![Output](./images/output.png)
+![Output](./images/oi_201.png)

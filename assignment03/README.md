@@ -18,6 +18,6 @@
 
 ### Output:
 
-![First Page](./images/first_page.png)
+![First Page](./images/oi_301.png)
 
-![Another Page](./images/another_page.png)
+![Another Page](./images/oi_302.png)

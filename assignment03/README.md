@@ -2,7 +2,7 @@
 
 ## Assignment 03
 
-### Perform the Following Steps :
+### Perform the Following Steps:
 
 1. Create an HTML file (e.g. first_page.html) that specifies a page that contains a heading and two paragraphs of text. Use the HTML tags h1 and p tags in this exercise. As the texts in the heading and paragraphs you can use any texts you like.
 

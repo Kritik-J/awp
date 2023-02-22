@@ -2,7 +2,7 @@
 
 ## Assignment 01
 
-### Perform the Following Steps :
+### Perform the Following Steps:
 
 1.  Install Visual Studio Code
 2.  Install git
